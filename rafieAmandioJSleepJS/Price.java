@@ -16,13 +16,13 @@ public class Price
         this.discount = 0;
     }
     
-    private double getDiscountedPrice(){
+    /*private double getDiscountedPrice(){
         if (discount >= 100.0) {
             return 0;
         }
         else{
             return price - ((double)price*(((double)discount)/100.0));
         }
-    }
+    }*/
 
 }

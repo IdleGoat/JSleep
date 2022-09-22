@@ -4,6 +4,4 @@ comment1.params=price\ discount
 comment1.target=Price(double,\ double)
 comment2.params=price
 comment2.target=Price(double)
-comment3.params=
-comment3.target=double\ getDiscountedPrice()
-numComments=4
+numComments=3
