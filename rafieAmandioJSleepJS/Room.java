@@ -12,7 +12,7 @@ public class Room
         this.size = size;
         this.price = price;
         this.facility = facility;
-        }
+    }
 
     }
 

@@ -35,9 +35,7 @@ public class Price
     }
 
     private double getDiscountedPrice(){
-        if(discount > 100.0){
-            return 100;
-        } else if (discount == 100.0) {
+        if (discount >= 100.0) {
             return 0;
         }
         else{
@@ -47,11 +45,9 @@ public class Price
 
     private double getRebatedPrice(){
         if(rebate > price){
-            return price;
+            rebate = price;
         }
-        else {
-            return price-rebate;
-        }
+        return price-rebate;
     }
 
 }
