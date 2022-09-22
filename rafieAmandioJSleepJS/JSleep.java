@@ -15,7 +15,6 @@ public class JSleep
         System.out.println(testroom.size);
         System.out.println(testroom.price.price);
         System.out.println(testroom.facility);
-        System.out.println(testroom.price);
     }
 
     public static Room createRoom(){
