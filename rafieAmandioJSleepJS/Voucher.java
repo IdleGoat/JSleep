@@ -11,6 +11,7 @@ public class Voucher
 
     public Voucher(String name, int code, Type type, double minimum, double cut){
         this.name = name;
+        this.used = false;
         this.code = code;
         this.type = type;
         this.minimum = minimum;
