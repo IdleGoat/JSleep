@@ -10,16 +10,16 @@ package rafieAmandioJSleepJS;
 public class JSleep
 {
     public static void main(String[] args) {
-        Room testroom = createRoom();
-        System.out.println(testroom.name);
-        System.out.println(testroom.size);
-        System.out.println(testroom.price.price);
-        System.out.println(testroom.facility);
+        Payment testRoom = new Payment(1,1,2,"10.00",1,"123","345");
+        Invoice testInvoice = new Invoice(1,1,1,"12.00");
+        System.out.println(testRoom.print());
+        System.out.println(testInvoice.print());
+        
     }
 
     public static Room createRoom(){
         Price price = new Price(100000.0,5);
-        Room room = new Room("Restaurant",30,price,Facility.AC);
+        Room room = new Room(12,"Restaurant",30,price,Facility.AC);
         return room;
     }
 
