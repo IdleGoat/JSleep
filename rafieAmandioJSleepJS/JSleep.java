@@ -10,18 +10,26 @@ package rafieAmandioJSleepJS;
 public class JSleep
 {
     public static void main(String[] args) {
-        Payment testRoom = new Payment(1,1,2,"10.00",1,"123","345");
-        Invoice testInvoice = new Invoice(1,1,1,"12.00");
-        System.out.println(testRoom.print());
-        System.out.println(testInvoice.print());
+        Complaint testComplain = new Complaint(1, "23 August 2022", "Bad Quality");
+        Price testPrice = new Price(100000, 20000);
+        Room testRoom = new Room(1, "Presidential Suite", 5, testPrice,
+        Facility.FitnessCenter, City.DEPOK, "JL. Margonda Raya");
+        Account testAccount = new Account(1, "Bob", "bob@gmail.com", "bob");
+        Rating testRating = new Rating();
+        System.out.println(testComplain.toString());
+        System.out.println(testRoom.toString());
+        System.out.println(testAccount.toString());
+        System.out.println(testPrice.toString());
+        System.out.println(testRating.toString());
+//        System.out.println(testInvoice.print());
         
     }
 
-    public static Room createRoom(){
-        Price price = new Price(100000.0,5);
-        Room room = new Room(12,"Restaurant",30,price,Facility.AC);
-        return room;
-    }
+//    public static Room createRoom(){
+//        Price price = new Price(100000.0,5);
+//        Room room = new Room(12,"Restaurant",30,price,Facility.AC);
+//        return room;
+//    }
 
 }
 
