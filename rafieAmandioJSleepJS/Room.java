@@ -22,6 +22,6 @@ public class Room extends Serializable
     }
     
     public String toString(){
-        return "Room\nId: " + super.id + "\nName: " + name + "\nSize: " + size + "\nPrice: " + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nCity: " + city + "\nBed Type: " + bedType;
+        return "Room\nId: " + super.id + "\nName: " + name + "\nSize: " + size + "\nPrice: " + price.price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address  + "\nBed Type: " + bedType;
     }
 }
