@@ -7,7 +7,7 @@ package rafieAmandioJSleepJS;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Account extends Serializable
+public class Account extends Serializable implements FileParser
 {
     public String name;
     public String email;
@@ -23,6 +23,12 @@ public class Account extends Serializable
         return "Account\nId: " + super.id + "\nName: " + name + "\nEmail: " + email + "\nPassword: " + password;
     }
 
+    public Object write(){
+        return null;
+    }
+    public boolean read(String string){
+        return false;
+    }
 
 
 }

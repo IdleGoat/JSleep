@@ -1,6 +1,6 @@
 package rafieAmandioJSleepJS;
 
-public class Room extends Serializable
+public class Room extends Serializable implements FileParser
 {
     public int size;
     public String name;
@@ -23,5 +23,12 @@ public class Room extends Serializable
     
     public String toString(){
         return "Room\nId: " + super.id + "\nName: " + name + "\nSize: " + size + "\nPrice: " + price.price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address  + "\nBed Type: " + bedType;
+    }
+    
+    public Object write(){
+        return null;
+    }
+    public boolean read(String string){
+        return false;
     }
 }
