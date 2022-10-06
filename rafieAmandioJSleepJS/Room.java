@@ -1,5 +1,8 @@
 package rafieAmandioJSleepJS;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Room extends Serializable implements FileParser
 {
     public int size;
@@ -9,10 +12,12 @@ public class Room extends Serializable implements FileParser
     public String address;
     public BedType bedType;
     public City city;
+    public ArrayList<Date> booked;
 
     public Room(int id,String name, int size, Price price, Facility facility,City city, String address){
         super(id);
         this.name = name;
+        this.booked = new ArrayList<Date>();
         this.size = size;
         this.price = price;
         this.facility = facility;

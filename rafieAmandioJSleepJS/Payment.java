@@ -2,32 +2,31 @@ package rafieAmandioJSleepJS;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Payment extends Invoice
 {
-    public Calendar to;
-    public Calendar from;
+    public Date to;
+    public Date from;
     private int roomId;
 
-    public Payment(int id, int buyerId, int renterId,int roomId)
+    public Payment(int id, int buyerId, int renterId,int roomId,Date from,Date to)
     {
         super(id, buyerId, renterId);
-        this.to = Calendar.getInstance();
-        this.from = Calendar.getInstance();
-        this.to.add(Calendar.DATE, 2);
+        this.to = to;
+        this.from = from;
         this.roomId = roomId;
     }
     
-    public Payment(int id,Account buyer,Renter renter,int roomId){
+    public Payment(int id,Account buyer,Renter renter,int roomId,Date from,Date to){
         super(id,buyer,renter);
-        this.to = Calendar.getInstance();
-        this.from = Calendar.getInstance();
-        this.to.add(Calendar.DATE, 2);
+        this.to = to;
+        this.from = from;
         this.roomId = roomId;
     }
     
     public String print(){
-        return "Id :" + id + " BuyerId :" + buyerId + " RenterId : " + renterId +
+        return "Id :" + this.id + " BuyerId :" + buyerId + " RenterId : " + renterId +
         " Time : " + time + " RoomId : " + roomId + " From : " + from + " To : " + to;
     }
     
@@ -38,13 +37,42 @@ public class Payment extends Invoice
     public String getTime(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 
-        return sdf.format(this.time.getTime());
+        return "Formatted Date = " + sdf.format(this.time.getTime());
     }
 
-    public String getDuration(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+    public static boolean makeBooking(Date from,Date to,Room room){
+        if(from.after(to)){
+            return false;
+        }
+        if(availability(from,to,room)){
+            for (Date date = from; date.before(to);) {
+                room.booked.add(date);
+                Calendar temp = Calendar.getInstance();
+                temp.setTime(date);
+                temp.add(Calendar.DATE, 1);
+                date = temp.getTime();
 
-        return sdf.format(this.from.getTime()) + " - " + sdf.format(to.getTime());
+            }
+            return true;
+        }
+        return false;
+
     }
+
+    public static boolean availability(Date from,Date to,Room room){
+
+        if(room.booked.size() == 0){
+            return true;
+        }
+        for(Date i : room.booked){
+            if((i.equals(from) || i.equals(to))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
 
 }
