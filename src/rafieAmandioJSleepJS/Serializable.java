@@ -14,7 +14,7 @@ public class Serializable
     public final int id;
     private static HashMap<Class<?>,Integer> mapCounter = new HashMap<Class<?>,Integer>() ;
     
-    public Serializable(){
+    protected Serializable(){
 
         Integer count = mapCounter.get(this.getClass());
         if(count == null){
