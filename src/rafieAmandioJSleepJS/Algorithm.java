@@ -40,7 +40,7 @@ public class Algorithm {
         return count;
     }
 
-    public static <T> boolean exist(T[] array, T value){
+    public static <T> boolean exists(T[] array, T value){
         final Iterator<T> it = Arrays.stream(array).iterator();
         return exists(it,value);
     }
