@@ -5,6 +5,9 @@ import java.util.Iterator;
 
 public class Algorithm {
 
+    private Algorithm(){
+
+    }
     public  static <T> int count(Iterator<T> iterator,T val){
         final Predicate<T> pred =val::equals;
         return count(iterator,pred);
