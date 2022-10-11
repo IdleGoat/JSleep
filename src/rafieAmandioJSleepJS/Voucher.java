@@ -9,8 +9,8 @@ public class Voucher extends Serializable implements FileParser
     public double minimum;
     private boolean used;
 
-    public Voucher(int id,String name, int code, Type type,boolean used, double minimum, double cut){
-        super(id);
+    public Voucher(String name, int code, Type type,boolean used, double minimum, double cut){
+        super();
         this.name = name;
         this.used = used;
         this.code = code;
