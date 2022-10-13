@@ -161,11 +161,11 @@ public class Algorithm {
         return paginate(it,page,pagesize,pred);
     }
 
-    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pagesize, Predicate<T> pred){
+    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred){
         List<T> listres = new ArrayList<T>();
         int count = 0;
-        int startindex = page * pagesize;
-        int endindex = startindex + pagesize;
+        int startindex = page * pageSize;
+        int endindex = startindex + pageSize;
         if (iterator.hasNext()) {
             do {
                 T obj = iterator.next();
