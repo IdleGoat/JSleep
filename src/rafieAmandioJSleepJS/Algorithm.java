@@ -1,13 +1,52 @@
 package rafieAmandioJSleepJS;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class Algorithm {
 
     private Algorithm(){
 
     }
+    public static <T> List<T> collect(T[] arr, Predicate<T> pred){
+        final Iterator<T> it = Arrays.stream(arr).iterator();
+        return collect(it,pred);
+    }
+    public static <T> List<T> collect(T[] arr,T val){
+        final Iterator<T> it = Arrays.stream(arr).iterator();
+        return collect(it,val);
+    }
+
+    public static <T> List<T> collect(Iterable<T> iterable, Predicate<T> pred){
+        final Iterator<T> it = iterable.iterator();
+        return collect(it,pred);
+    }
+    public static <T> List<T> collect(Iterable<T> iterable,T val){
+        final Iterator<T> it = iterable.iterator();
+        return collect(it,val);
+    }
+
+    public static <T> List<T> collect(Iterator<T> iterator,T val){
+        final Predicate<T> pred =val::equals;
+        return collect(iterator,pred);
+    }
+
+    public static <T> List<T> collect(Iterator<T> iterator,Predicate<T> pred){
+        List<T> listres = new ArrayList<T>();
+        T val;
+        if (iterator.hasNext()) {
+            do {
+                val = iterator.next();
+                if (pred.predicate(val)) {
+                    listres.add(val);
+                }
+            } while (iterator.hasNext());
+        }
+        return listres;
+    }
+
     public  static <T> int count(Iterator<T> iterator,T val){
         final Predicate<T> pred =val::equals;
         return count(iterator,pred);
@@ -112,5 +151,32 @@ public class Algorithm {
         return null;
     }
 
+    public static <T> List<T> paginate(T[] arr, int page, int pagesize, Predicate<T> pred){
+        final Iterator<T> it = Arrays.stream(arr).iterator();
+        return paginate(it,page,pagesize,pred);
+    }
 
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pagesize, Predicate<T> pred){
+        final Iterator<T> it = iterable.iterator();
+        return paginate(it,page,pagesize,pred);
+    }
+
+    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pagesize, Predicate<T> pred){
+        List<T> listres = new ArrayList<T>();
+        int count = 0;
+        int startindex = page * pagesize;
+        int endindex = startindex + pagesize;
+        if (iterator.hasNext()) {
+            do {
+                T obj = iterator.next();
+                if (pred.predicate(obj)) {
+                    if (count >= startindex && count < endindex) {
+                        listres.add(obj);
+                    }
+                    count++;
+                }
+            } while (iterator.hasNext());
+        }
+        return listres;
+    }
 }

@@ -59,6 +59,7 @@ public class Payment extends Invoice
 
     }
 
+    //Todo : logic for checking availability and booking
     public static boolean availability(Date from,Date to,Room room){
 
         if(room.booked.size() == 0){
