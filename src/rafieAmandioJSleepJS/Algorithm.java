@@ -151,14 +151,14 @@ public class Algorithm {
         return null;
     }
 
-    public static <T> List<T> paginate(T[] arr, int page, int pagesize, Predicate<T> pred){
+    public static <T> List<T> paginate(T[] arr, int page, int pageSize, Predicate<T> pred){
         final Iterator<T> it = Arrays.stream(arr).iterator();
-        return paginate(it,page,pagesize,pred);
+        return paginate(it,page,pageSize,pred);
     }
 
-    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pagesize, Predicate<T> pred){
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred){
         final Iterator<T> it = iterable.iterator();
-        return paginate(it,page,pagesize,pred);
+        return paginate(it,page,pageSize,pred);
     }
 
     public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred){
