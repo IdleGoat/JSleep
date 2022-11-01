@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+
 import com.google.gson.*;
 
 /**
@@ -16,34 +17,73 @@ import com.google.gson.*;
  */
 public class JSleep
 {
-    class Country{
-        public String name;
-        public int population;
-        public List<String> listOfStates;
-    }
+//    class Country{
+//        public String name;
+//        public int population;
+//        public List<String> listOfStates;
+//    }
     public static void main(String[] args) {
 
-        String filepath = "src\\city.json";
-        Gson gson = new Gson();
+//        Renter testRegex = new Renter("Netlab_","081315295842","Jl. Kebon Jeruk");
+//        Renter testRegexfalse = new Renter("netlab","081","Jl. Kebon Jeruk");
+//        System.out.println(testRegex.validate());
+//        System.out.println(testRegexfalse.validate());
+
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filepath));
-            Country input = gson.fromJson(br, Country.class);
-            System.out.println("name: " + input.name);
-            System.out.println("population: " + input.population);
-            System.out.println("states:");
-            input.listOfStates.forEach(System.out::println);
-        } catch (IOException e) {
-            e.printStackTrace();
+            String filepath = "src\\json\\randomRoomList.json";
+
+            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
+
+            List<Room> filterTableRoom = filterByAccountId(tableRoom, 11,0,5);
+            filterTableRoom.forEach(room -> System.out.println(room.toString()));
         }
+        catch (Throwable t) {
+            t.printStackTrace();
+        }
+
+
+//
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(filepath));
+//            Country input = gson.fromJson(br, Country.class);
+//            System.out.println("name: " + input.name);
+//            System.out.println("population: " + input.population);
+//            System.out.println("states:");
+//            input.listOfStates.forEach(System.out::println);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
+    public static Room createRoom(){
+        Price price = new Price(100000.0,5);
+        Room room = new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
+        return room;
+    }
+
+    public static List<Room> filterByCity(List<Room> list, String city,int page,int pagesize){
+        List<Room> filtered = new ArrayList<Room>();
+        filtered = Algorithm.<Room>paginate(list,page,pagesize,a -> a.city == City.valueOf(city.toUpperCase()));
+        return filtered;
+    }
+
+    public static List<Room> filterByPrice(List<Room> list, double min,double max){
+        List<Room> filtered = new ArrayList<Room>();
+        filtered = Algorithm.<Room>collect(list,i -> ((i.price.price >= min) && (i.price.price <= max)));
+        return filtered;
+    }
+
+    public static List<Room> filterByAccountId(List<Room> list,int accountId,int page,int pagesize){
+        List<Room> filtered = new ArrayList<Room>();
+        filtered = Algorithm.<Room>paginate(list,page,pagesize,i -> i.accountId == accountId);
+        return filtered;
+    }
 }
 
-//    public static Room createRoom(){
-//        Price price = new Price(100000.0,5);
-//        Room room = new Room("Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
-//       return room;
-//    }
+
+
+
 
 //    public static Account createAccount(){
 //        return new Account("Rafie","Amandio","Fauzan");}

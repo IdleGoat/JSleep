@@ -1,6 +1,6 @@
 package rafieAmandioJSleepJS;
 
-public class Voucher extends Serializable implements FileParser
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
@@ -46,11 +46,11 @@ public class Voucher extends Serializable implements FileParser
         }
     }
 
-    public Object write(){
-        return null;
-    }
-    
-    public boolean read(String string){
-        return false;
-    }
+//    public Object write(){
+//        return null;
+//    }
+//
+//    public boolean read(String string){
+//        return false;
+//    }
 }
