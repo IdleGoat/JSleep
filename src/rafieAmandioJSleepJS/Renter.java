@@ -12,7 +12,7 @@ public class Renter extends Serializable
     public String phoneNumber;
     public String address;
     public String username;
-
+    //TODO: Check REGEX
     public final static String REGEX_NAME = "^[A-Z][a-zA-Z0-9_]{4,20}$";
     //create regex for phone number minimum 9 digits and maximum 12 digit
     public final static String REGEX_PHONE = "^[0-9]{9,12}$";

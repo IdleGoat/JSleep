@@ -24,38 +24,28 @@ public class JSleep
 //    }
     public static void main(String[] args) {
 
-//        Renter testRegex = new Renter("Netlab_","081315295842","Jl. Kebon Jeruk");
-//        Renter testRegexfalse = new Renter("netlab","081","Jl. Kebon Jeruk");
+//        Account testRegex = new Account("Rafie","rafieamandio@gmail.com","Rmandio2022");
+//        Account testRegexfalse = new Account("Rafie Gagal","amandio@ui.ac.id","Amandio2022");
 //        System.out.println(testRegex.validate());
 //        System.out.println(testRegexfalse.validate());
 
-
         try {
-            String filepath = "src\\json\\randomRoomList.json";
+            String filepath = "src\\json\\account.json";
+            JsonTable<Account> tableAccount = new JsonTable<Account>(Account.class, filepath);
+            Account account = new Account("name","email","password");
+            tableAccount.add(account);
+            tableAccount.writeJson();
 
-            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-
-            List<Room> filterTableRoom = filterByAccountId(tableRoom, 11,0,5);
-            filterTableRoom.forEach(room -> System.out.println(room.toString()));
         }
         catch (Throwable t) {
             t.printStackTrace();
         }
 
-
-//
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader(filepath));
-//            Country input = gson.fromJson(br, Country.class);
-//            System.out.println("name: " + input.name);
-//            System.out.println("population: " + input.population);
-//            System.out.println("states:");
-//            input.listOfStates.forEach(System.out::println);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        for(int i =0; i < 10; i++){
+            ThreadingObject thread = new ThreadingObject("Thread " + i);
+        }
     }
-
+    //Todo: check filtering logic
     public static Room createRoom(){
         Price price = new Price(100000.0,5);
         Room room = new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
@@ -64,7 +54,7 @@ public class JSleep
 
     public static List<Room> filterByCity(List<Room> list, String city,int page,int pagesize){
         List<Room> filtered = new ArrayList<Room>();
-        filtered = Algorithm.<Room>paginate(list,page,pagesize,a -> a.city == City.valueOf(city.toUpperCase()));
+        filtered = Algorithm.<Room>paginate(list,page,pagesize,kamar -> kamar.city == City.valueOf(city.toUpperCase()));
         return filtered;
     }
 
