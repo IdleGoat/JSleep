@@ -24,10 +24,10 @@ public class JSleep
 //    }
     public static void main(String[] args) {
 
-//        Account testRegex = new Account("Rafie","rafieamandio@gmail.com","Rmandio2022");
-//        Account testRegexfalse = new Account("Rafie Gagal","amandio@ui.ac.id","Amandio2022");
-//        System.out.println(testRegex.validate());
-//        System.out.println(testRegexfalse.validate());
+        Account testRegex = new Account("Rafie","rafieamandio@gmail.com","Rmandio2022");
+        Account testRegexfalse = new Account("Rafie Gagal","amandio@ui.ac.id","Amandio2022");
+        System.out.println(testRegex.validate());
+        System.out.println(testRegexfalse.validate());
 
         try {
             String filepath = "src\\json\\account.json";
@@ -48,8 +48,7 @@ public class JSleep
     //Todo: check filtering logic
     public static Room createRoom(){
         Price price = new Price(100000.0,5);
-        Room room = new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
-        return room;
+        return new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
     }
 
     public static List<Room> filterByCity(List<Room> list, String city,int page,int pagesize){
