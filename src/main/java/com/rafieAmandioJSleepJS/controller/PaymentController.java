@@ -5,8 +5,12 @@ import com.rafieAmandioJSleepJS.Payment;
 import com.rafieAmandioJSleepJS.dbjson.JsonAutowired;
 import com.rafieAmandioJSleepJS.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment> {
     @JsonAutowired(value= Account.class,filepath = "src/json/account.json")
     public static JsonTable<Payment> paymentTable;
@@ -15,21 +19,17 @@ public class PaymentController implements BasicGetController<Payment> {
         return paymentTable;
     }
 
-    @PostMapping("/payment/accept")
-    public boolean accept(
-            @RequestParam int id
-    ){
+    @PostMapping("/accept")
+    public boolean accept( @RequestParam int id ){
         return false;
     }
 
-    @PostMapping("/payment/cancel")
-    public boolean cancel(
-            @RequestParam int id
-    ){
+    @PostMapping("/cancel")
+    public boolean cancel(@RequestParam int id  ){
         return false;
     }
 
-    @PostMapping("/payment/create")
+    @PostMapping("/create")
     public Payment create(
             @RequestParam int buyerId,
             @RequestParam int renterId,
@@ -40,10 +40,8 @@ public class PaymentController implements BasicGetController<Payment> {
         return null;
     }
 
-    @PostMapping("/payment/submit")
-    public boolean submit(
-            @RequestParam int id
-    ){
+    @PostMapping("/submit")
+    public boolean submit( @RequestParam int id ){
         return false;
     }
 

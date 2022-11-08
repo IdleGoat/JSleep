@@ -35,7 +35,7 @@ public class AccountController implements BasicGetController<Account>
         return accountTable;
     }
 
-    @GetMapping("/account/login")
+    @PostMapping("/login")
     Account login(
         @RequestParam String email,
         @RequestParam String password
@@ -44,7 +44,7 @@ public class AccountController implements BasicGetController<Account>
         return temp;
     }
 
-    @PostMapping("/account/register")
+    @PostMapping("/register")
     Account register(
             @RequestParam String name,
             @RequestParam String email,
@@ -55,6 +55,7 @@ public class AccountController implements BasicGetController<Account>
         Matcher matcherpassword = REGEX_PATTERN_PASSWORD.matcher(password);
         boolean passwordstatus = matcherpassword.find();
         if(passwordstatus && emailstatus && !name.isBlank()){
+            accountTable.add(new Account(name,email,password));
             return new Account(name, email, password);
         }
         else{
@@ -63,7 +64,7 @@ public class AccountController implements BasicGetController<Account>
 
     }
 
-    @PostMapping("/account/{id}/registerRenter")
+    @PostMapping("/{id}/registerRenter")
     Renter registerRenter(@PathVariable int id, @RequestParam String username, @RequestParam String address,
             @RequestParam String phoneNumber ){
 
@@ -77,7 +78,7 @@ public class AccountController implements BasicGetController<Account>
         }
     }
 
-    @PostMapping("/account/{id}/topUp")
+    @PostMapping("/{id}/topUp")
     boolean topUp(@PathVariable int id, @RequestParam double balance ){
         Account account = Algorithm.<Account>find(accountTable, acc -> id == acc.id);
         if (account != null){
