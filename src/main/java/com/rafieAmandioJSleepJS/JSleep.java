@@ -1,11 +1,10 @@
 package com.rafieAmandioJSleepJS;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
+
+import com.rafieAmandioJSleepJS.dbjson.JsonDBEngine;
+import com.rafieAmandioJSleepJS.dbjson.JsonTable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -20,27 +19,31 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JSleep
 {
     public static void main(String[] args) {
+        JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
-        Account testRegex = new Account("Rafie","rafieamandio@gmail.com","Rmandio2022");
-        Account testRegexfalse = new Account("Rafie Gagal","amandio@ui.ac.id","Amandio2022");
-        System.out.println(testRegex.validate());
-        System.out.println(testRegexfalse.validate());
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
 
-        try {
-            String filepath = "src\\json\\account.json";
-            JsonTable<Account> tableAccount = new JsonTable<Account>(Account.class, filepath);
-            Account account = new Account("name","email","password");
-            tableAccount.add(account);
-            tableAccount.writeJson();
 
-        }
-        catch (Throwable t) {
-            t.printStackTrace();
-        }
-
-        for(int i =0; i < 10; i++){
-            ThreadingObject thread = new ThreadingObject("Thread " + i);
-        }
+//        Account testRegex = new Account("Rafie","rafieamandio@gmail.com","Rmandio2022");
+//        Account testRegexfalse = new Account("Rafie Gagal","amandio@ui.ac.id","Amandio2022");
+//        System.out.println(testRegex.validate());
+//        System.out.println(testRegexfalse.validate());
+//
+//        try {
+//            String filepath = "src\\json\\account.json";
+//            JsonTable<Account> tableAccount = new JsonTable<Account>(Account.class, filepath);
+//            Account account = new Account("name","email","password");
+//            tableAccount.add(account);
+//            tableAccount.writeJson();
+//
+//        }
+//        catch (Throwable t) {
+//            t.printStackTrace();
+//        }
+//
+//        for(int i =0; i < 10; i++){
+//            ThreadingObject thread = new ThreadingObject("Thread " + i);
+//        }
     }
     //Todo: check filtering logic
     public static Room createRoom(){

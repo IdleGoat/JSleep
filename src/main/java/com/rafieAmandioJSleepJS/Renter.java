@@ -1,6 +1,8 @@
 package com.rafieAmandioJSleepJS;
 
 
+import com.rafieAmandioJSleepJS.dbjson.Serializable;
+
 /**
  * Write a description of class Renter here.
  *

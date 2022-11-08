@@ -1,5 +1,7 @@
 package com.rafieAmandioJSleepJS;
 
+import com.rafieAmandioJSleepJS.dbjson.Serializable;
+
 import java.util.ArrayList;
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.rafieAmandioJSleepJS;
+package com.rafieAmandioJSleepJS.dbjson;
 
 
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Serializable
+public class Serializable implements Comparable<Serializable>
 {
     public final int id;
     private static HashMap<Class<?>,Integer> mapCounter = new HashMap<Class<?>,Integer>() ;

@@ -1,6 +1,8 @@
 package com.rafieAmandioJSleepJS;
 
 
+import com.rafieAmandioJSleepJS.dbjson.Serializable;
+
 /**
  * Write a description of class Account here.
  *
@@ -9,6 +11,8 @@ package com.rafieAmandioJSleepJS;
  */
 public class Account extends Serializable
 {
+    public double balance;
+    public Renter renter;
     public String name;
     public String email;
     public String password;
@@ -19,6 +23,7 @@ public class Account extends Serializable
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = 0;
     }
 
     public String toString(){

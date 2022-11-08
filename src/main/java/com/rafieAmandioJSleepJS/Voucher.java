@@ -1,5 +1,7 @@
 package com.rafieAmandioJSleepJS;
 
+import com.rafieAmandioJSleepJS.dbjson.Serializable;
+
 public class Voucher extends Serializable
 {
     public Type type;

@@ -1,6 +1,8 @@
 package com.rafieAmandioJSleepJS;
 
 
+import com.rafieAmandioJSleepJS.dbjson.Serializable;
+
 public class Complaint extends Serializable
 {
     public String desc;
