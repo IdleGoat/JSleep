@@ -27,47 +27,53 @@ public class Payment extends Invoice
     
     public String print(){
         return "Id :" + this.id + " BuyerId :" + buyerId + " RenterId : " + renterId +
-        " Time : " + time + " RoomId : " + roomId + " From : " + from + " To : " + to;
+          " RoomId : " + roomId + " From : " + from + " To : " + to;
     }
     
     public int getRoomId(){
         return roomId;
     }
     
-    public String getTime(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-
-        return "Formatted Date = " + sdf.format(this.time.getTime());
-    }
+//    public String getTime(){
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+//
+//        return "Formatted Date = " + sdf.format(this.time.getTime());
+//    }
 
     public static boolean makeBooking(Date from,Date to,Room room){
-        if(from.after(to)){
-            return false;
-        }
-        if(availability(from,to,room)){
-            for (Date date = from; date.before(to);) {
-                room.booked.add(date);
-                Calendar temp = Calendar.getInstance();
-                temp.setTime(date);
-                temp.add(Calendar.DATE, 1);
-                date = temp.getTime();
+        if(availability(from, to, room)){
 
+
+            while (from.before(to)){
+                room.booked.add(from); // Assign ke array
+                Calendar tempVar = Calendar.getInstance();
+                tempVar.setTime(from);
+                tempVar.add(Calendar.DATE, 1); //Increment 1
+                from = tempVar.getTime();
             }
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
 
     }
 
     //Todo : logic for checking availability and booking
     public static boolean availability(Date from,Date to,Room room){
 
-        if(room.booked.size() == 0){
-            return true;
+
+        if(from.after(to) || from.equals(to)){
+            return false;
         }
-        for(Date i : room.booked){
-            if( i.after(from) && i.before(to)){
+
+        for (Date i : room.booked) {
+            if (from.equals(i)) {
                 return false;
+            } else if(from.before(i)){
+                if(from.before(i) && to.after(i)){
+                    return false;
+                }
             }
         }
         return true;
