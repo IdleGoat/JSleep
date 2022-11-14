@@ -43,7 +43,6 @@ public class Payment extends Invoice
     public static boolean makeBooking(Date from,Date to,Room room){
         if(availability(from, to, room)){
 
-
             while (from.before(to)){
                 room.booked.add(from); // Assign ke array
                 Calendar tempVar = Calendar.getInstance();

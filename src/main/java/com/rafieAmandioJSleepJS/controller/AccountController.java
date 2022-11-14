@@ -72,7 +72,10 @@ public class AccountController implements BasicGetController<Account>
         boolean emailstatus = REGEX_PATTERN_EMAIL.matcher(email).find();
         boolean passwordstatus = REGEX_PATTERN_PASSWORD.matcher(password).find();
 
-        if(passwordstatus && emailstatus && !name.isBlank()){
+        Account isUsed = Algorithm.<Account>find(getJsonTable(),pred -> pred.email.equals(email));
+
+
+        if(passwordstatus && emailstatus && !name.isBlank() && isUsed != null){
             try{
                 MessageDigest md = MessageDigest.getInstance("MD5");
                 byte[] bytes = md.digest(password.getBytes());

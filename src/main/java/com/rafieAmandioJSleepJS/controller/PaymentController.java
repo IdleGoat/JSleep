@@ -72,7 +72,7 @@ public class PaymentController implements BasicGetController<Payment> {
             Payment payment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
             buyer.balance -= room.price.price;
             payment.status = Invoice.PaymentStatus.WAITING;
-            if(Payment.makeBooking(fromDate, toDate, room)){
+            if(payment.makeBooking(fromDate, toDate, room)){
                 paymentTable.add(payment);
                 return payment;
             }
