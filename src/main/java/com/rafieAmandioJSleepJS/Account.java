@@ -10,12 +10,37 @@ import com.rafieAmandioJSleepJS.dbjson.Serializable;
  */
 public class Account extends Serializable
 {
+    /**
+     * The balance of the account.
+     */
     public double balance;
+    /**
+     * The renter of the account.
+     */
     public Renter renter;
+    /**
+     * The owner of the account.
+     */
     public String name;
+    /**
+     * The email of the account.
+     */
     public String email;
+    /**
+     * The password of the account.
+     */
     public String password;
+    /**
+     * Regex for the email. Email should be in the format of
+     * in the format of local@domain, example : amandio@ui.ac.id
+     * local only contains alphanumeric characters and can't contain
+     * any special characters or whitespace. domain can't contain any number
+     */
     public  static final String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\.[a-zA-Z]+?$";
+    /**
+     * Regex for the password. Password should be at least 8 characters long
+     * and contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and no whitespace
+     */
     public  static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 
     /**

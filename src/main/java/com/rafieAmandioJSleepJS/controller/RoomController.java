@@ -56,6 +56,42 @@ public class RoomController implements BasicGetController<Room>{
         return room;
     }
 
+    @GetMapping("/filterByCity")
+    List<Room> filterByCity(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam City city
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,kamar -> kamar.city == city);
+    }
+
+    /**
+     * This method is used to filter room by Name
+     * @param page page number
+     * @param pageSize item per page
+     * @param name name of the room that will be filtered
+     * @return list of room that match the name
+     * @author Rafie Amandio
+     */
+    @GetMapping("/filterByName")
+    List<Room> filterByName(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam String name
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,kamar -> kamar.name.contains(name));
+    }
+
+    @GetMapping("/filterByPrice")
+    List<Room> filterByPrice(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam int min,
+            @RequestParam int max
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,i -> ((i.price.price >= min) && (i.price.price <= max)));
+    }
+
 
 
 

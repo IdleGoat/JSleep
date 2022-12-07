@@ -96,7 +96,6 @@ public class AccountController implements BasicGetController<Account>
         else{
             return null;
         }
-
     }
 
     @PostMapping("/{id}/registerRenter")
