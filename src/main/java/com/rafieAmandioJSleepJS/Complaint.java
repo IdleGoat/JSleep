@@ -3,6 +3,11 @@ package com.rafieAmandioJSleepJS;
 
 import com.rafieAmandioJSleepJS.dbjson.Serializable;
 
+/**
+ * This class is used to store the information of a complaint.
+ * @author Rafie Amandio
+ * @see Serializable
+ */
 public class Complaint extends Serializable
 {
     public String desc;

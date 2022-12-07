@@ -2,10 +2,9 @@ package com.rafieAmandioJSleepJS;
 
 
 /**
- * Enumeration class BedType - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Enumeration class BedType
+ * This class is used to represent the bed type of a room
+ * @author Rafie Amandio
  */
 public enum BedType
 {

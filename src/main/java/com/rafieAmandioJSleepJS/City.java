@@ -2,10 +2,9 @@ package com.rafieAmandioJSleepJS;
 
 
 /**
- * Enumeration class City - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Enumeration class City
+ * This class is used to represent the city of a room
+ * @author Rafie Amandio
  */
 public enum City
 {
