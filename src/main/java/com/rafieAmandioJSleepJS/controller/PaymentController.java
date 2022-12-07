@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/payment")
@@ -86,6 +88,20 @@ public class PaymentController implements BasicGetController<Payment> {
     @PostMapping("/submit")
     public boolean submit( @RequestParam int id ){
         return false;
+    }
+
+   @GetMapping("/getOrderForRenter")
+    public List<Payment> getOrderForRenter(
+            @RequestParam int renterId
+    ){
+        return Algorithm.<Payment>collect(getJsonTable(),pred -> pred.renterId == renterId);
+    }
+
+    @GetMapping("/getOrderForBuyer")
+    public List<Payment> getOrderForBuyer(
+            @RequestParam int buyerId
+    ){
+        return Algorithm.<Payment>collect(getJsonTable(),pred -> pred.buyerId == buyerId);
     }
 
 
