@@ -46,10 +46,10 @@ public class JSleep
 //        }
     }
     //Todo: check filtering logic
-    public static Room createRoom(){
-        Price price = new Price(100000.0,5);
-        return new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
-    }
+//    public static Room createRoom(){
+//        Price price = new Price(100000.0,5);
+//        return new Room(2,"Restaurant",30,price,Facility.AC,City.JAKARTA,"Jl.Medan");
+//    }
 
     public static List<Room> filterByCity(List<Room> list, String city,int page,int pagesize){
         List<Room> filtered = new ArrayList<Room>();

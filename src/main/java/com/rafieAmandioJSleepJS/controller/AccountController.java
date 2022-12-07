@@ -73,9 +73,11 @@ public class AccountController implements BasicGetController<Account>
         boolean passwordstatus = REGEX_PATTERN_PASSWORD.matcher(password).find();
 
         Account isUsed = Algorithm.<Account>find(getJsonTable(),pred -> pred.email.equals(email));
-
-
-        if(passwordstatus && emailstatus && !name.isBlank() && isUsed != null){
+        System.out.println(passwordstatus);
+        System.out.println(emailstatus);
+        System.out.println(!name.isBlank());
+        System.out.println(isUsed == null);
+        if(passwordstatus && emailstatus && !name.isBlank() && isUsed == null){
             try{
                 MessageDigest md = MessageDigest.getInstance("MD5");
                 byte[] bytes = md.digest(password.getBytes());
@@ -112,13 +114,13 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/{id}/topUp")
-    boolean topUp(@PathVariable int id, @RequestParam double balance ){
+    Boolean topUp(@PathVariable int id, @RequestParam double balance ){
         Account account = Algorithm.<Account>find(accountTable, acc -> id == acc.id);
         if (account != null){
             account.balance += balance;
-            return true;
+            return Boolean.TRUE;
         }else{
-            return false;
+            return Boolean.FALSE;
         }
     }
 

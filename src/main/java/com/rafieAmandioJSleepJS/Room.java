@@ -9,7 +9,7 @@ public class Room extends Serializable
 {
     public BedType bedType;
     public int accountId;
-    public Facility facility;
+    public ArrayList<Facility> facility = new ArrayList<Facility>();
     public City city;
     public int size;
     public String name;
@@ -17,7 +17,7 @@ public class Room extends Serializable
     public String address;
     public Price price;
 
-    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
+    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address){
         super();
         this.accountId = accountId;
         this.name = name;

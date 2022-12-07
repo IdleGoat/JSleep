@@ -62,8 +62,9 @@ public class PaymentController implements BasicGetController<Payment> {
         Date toDate = sdf.parse(to);
         Account buyer = Algorithm.<Account>find(AccountController.accountTable, pred -> pred.id == buyerId);
         Room room = Algorithm.<Room>find(RoomController.roomTable, pred -> pred.id == roomId);
-
-
+        System.out.println(Payment.availability(fromDate,toDate,room));
+        System.out.println(buyer.balance);
+        System.out.println(room.price.price);
 
         if (buyer == null || room == null || buyer.balance <= room.price.price || !Payment.availability(fromDate, toDate, room)) {
             return null;
@@ -72,7 +73,7 @@ public class PaymentController implements BasicGetController<Payment> {
             Payment payment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
             buyer.balance -= room.price.price;
             payment.status = Invoice.PaymentStatus.WAITING;
-            if(payment.makeBooking(fromDate, toDate, room)){
+            if(Payment.makeBooking(fromDate, toDate, room)){
                 paymentTable.add(payment);
                 return payment;
             }
