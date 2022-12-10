@@ -171,6 +171,8 @@ public class AccountController implements BasicGetController<Account>
      */
     @PostMapping("/{id}/topUp")
     Boolean topUp(@PathVariable int id, @RequestParam double balance ){
+        System.out.println(balance);
+        System.out.println(id);
         Account account = Algorithm.<Account>find(accountTable, acc -> id == acc.id);
         if (account != null){
             account.balance += balance;
