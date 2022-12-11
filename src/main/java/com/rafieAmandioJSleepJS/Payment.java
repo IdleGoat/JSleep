@@ -4,12 +4,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This class is used to represent a payment
+ * @author Rafie Amandio
+ * @see Invoice
+ */
 public class Payment extends Invoice
 {
     public Date to;
     public Date from;
     private int roomId;
 
+    /**
+     * Payment Constructor
+     * @param buyerId id of the buyer
+     * @param renterId id of the renter
+     * @param roomId id of the room
+     * @param from date of the start of the booking
+     * @param to date of the end of the booking
+     */
     public Payment(int buyerId, int renterId,int roomId,Date from,Date to)
     {
         super(buyerId, renterId);
@@ -17,7 +30,15 @@ public class Payment extends Invoice
         this.from = from;
         this.roomId = roomId;
     }
-    
+
+    /**
+     * Payment Constructor
+     * @param buyer account of the buyer
+     * @param renter account of the renter
+     * @param roomId id of the room
+     * @param from date of the start of the booking
+     * @param to date of the end of the booking
+     */
     public Payment(Account buyer,Renter renter,int roomId,Date from,Date to){
         super(buyer,renter);
         this.to = to;

@@ -2,16 +2,24 @@ package com.rafieAmandioJSleepJS;
 import com.rafieAmandioJSleepJS.dbjson.Serializable;
 
 
-
-
+/**
+ * This class is used to store the information of an invoice.
+ * @author Rafie Amandio
+ */
 public class Invoice extends Serializable
 {
+
     public int buyerId;
     public int renterId;
     //public Date time;
     public PaymentStatus status;
     public RoomRating rating;
 
+    /**
+     * Invoice Constructor
+     * @param buyerId id of the buyer
+     * @param renterId id of the renter
+     */
     protected Invoice(int buyerId, int renterId)
     {
         super();
@@ -22,6 +30,11 @@ public class Invoice extends Serializable
         this.rating = RoomRating.NONE;
     }
 
+    /**
+     * Invoice Constructor
+     * @param buyer account of the buyer
+     * @param renter Renter of the renter
+     */
     public Invoice(Account buyer, Renter renter)
     {
         super();
@@ -37,11 +50,17 @@ public class Invoice extends Serializable
         return "Id :" + id + " BuyerId :" + buyerId + " RenterId : " + renterId;
 
     }
-    
+
+    /**
+     * Enum for Room Rating
+     */
     public enum RoomRating{
         NONE,BAD,NEUTRAL,GOOD
     }
-    
+
+    /**
+     * Enum for Payment Status
+     */
     public enum PaymentStatus{
         FAILED,WAITING,SUCCESS
     }

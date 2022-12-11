@@ -12,7 +12,12 @@ public class Complaint extends Serializable
 {
     public String desc;
     public String date;
-    
+
+    /**
+     * Complaint Constructor
+     * @param date date of the complaint
+     * @param desc compaint description
+     */
     public Complaint(String date,String desc){
         super();
         this.desc = desc;

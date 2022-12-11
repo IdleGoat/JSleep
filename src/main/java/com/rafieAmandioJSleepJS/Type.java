@@ -2,10 +2,8 @@ package com.rafieAmandioJSleepJS;
 
 
 /**
- * Enumeration class Type - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * This enum is used to store the type of a voucher
+ * @author Rafie Amandio
  */
 public enum Type
 {

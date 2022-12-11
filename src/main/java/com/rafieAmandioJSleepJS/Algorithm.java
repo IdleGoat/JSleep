@@ -31,6 +31,13 @@ public class Algorithm {
         return count(it, pred);
     }
 
+    /**
+     * Count the number of elements in the iterator that satisfy the predicate
+     * @param iterator iterator
+     * @param pred
+     * @return int of how many item available
+     * @param <T>
+     */
     public static <T> int count(Iterator<T> iterator, Predicate<T> pred) {
         int count = 0;
         while (iterator.hasNext())
