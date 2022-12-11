@@ -119,6 +119,18 @@ public class RoomController implements BasicGetController<Room>{
     }
 
     /**
+     * This method is used to filter room by bed Type
+     * @param bedType bed type of the room that will be filtered
+     * @return list of room that match the bed type
+     */
+    @GetMapping("/collectByBedType")
+    List<Room> filterByBedType(
+            @RequestParam BedType bedType
+    ){
+        return Algorithm.<Room>collect(getJsonTable(),kamar -> kamar.bedType == bedType);
+    }
+
+    /**
      * This method is used to filter room by price
      * @param min minimum price
      * @param max maximum price
