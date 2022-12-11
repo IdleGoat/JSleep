@@ -72,12 +72,19 @@ public class PaymentController implements BasicGetController<Payment> {
             return null;
         }
         else{
-            Payment payment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
-            buyer.balance -= room.price.price;
-            payment.status = Invoice.PaymentStatus.WAITING;
+
             if(Payment.makeBooking(fromDate, toDate, room)){
-                paymentTable.add(payment);
-                return payment;
+                try{
+                    Payment payment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
+                    long diff = toDate.getTime() - fromDate.getTime();
+                    long diffDays = diff / (24 * 60 * 60 * 1000);
+                    buyer.balance -= (room.price.price * diffDays);
+                    payment.status = Invoice.PaymentStatus.WAITING;
+                    paymentTable.add(payment);
+                    return payment;
+                }catch (Exception e){
+                    return null;
+                }
             }
             else{
                 return null;

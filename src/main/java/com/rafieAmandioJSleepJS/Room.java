@@ -5,6 +5,12 @@ import com.rafieAmandioJSleepJS.dbjson.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Room class
+ * This class is used to represent a room
+ * @author Rafie Amandio
+ * @see Serializable
+ */
 public class Room extends Serializable
 {
     public BedType bedType;
@@ -17,7 +23,7 @@ public class Room extends Serializable
     public String address;
     public Price price;
 
-    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address){
+    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address,BedType bedType){
         super();
         this.accountId = accountId;
         this.name = name;
@@ -26,7 +32,7 @@ public class Room extends Serializable
         this.facility = facility;
         this.city = city;
         this.address = address;
-        this.bedType = BedType.SINGLE;
+        this.bedType = bedType;
         this.booked = new ArrayList<Date>();
 
     }
