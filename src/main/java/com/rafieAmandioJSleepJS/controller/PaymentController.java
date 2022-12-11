@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Payment Controller class
+ * This class is used to payment room API
+ */
 @RestController
 @RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment> {
@@ -21,6 +25,11 @@ public class PaymentController implements BasicGetController<Payment> {
         return paymentTable;
     }
 
+    /**
+     * accept payment status
+     * @param id payment id
+     * @return boolean status if the accept is success or not
+     */
     @PostMapping("/{id}/accept")
     public boolean accept( @PathVariable int id ){
 
@@ -35,6 +44,11 @@ public class PaymentController implements BasicGetController<Payment> {
 
     }
 
+    /**
+     * reject payment status
+     * @param id payment id
+     * @return boolean status if the reject is success or not
+     */
     @PostMapping("/{id}/cancel")
     public boolean cancel(@PathVariable int id ){
         Payment payment = Algorithm.<Payment>find(paymentTable,payment1 -> payment1.id == id);
@@ -49,6 +63,17 @@ public class PaymentController implements BasicGetController<Payment> {
 
     }
 
+    /**
+     * Creating new payment
+     * @param buyerId buyer id
+     * @param renterId renter id
+     * @param roomId room id
+     * @param from from date
+     * @param to to date
+     * @return Payment object of the newly made payment
+     * @author Rafie Amandio
+     * @throws ParseException
+     */
     @PostMapping("/create")
     public Payment create(
             @RequestParam int buyerId,
@@ -97,6 +122,13 @@ public class PaymentController implements BasicGetController<Payment> {
         return false;
     }
 
+    /**
+     * Get All Payment by renter Id
+     * @param renterId renter id
+     * @param page page number
+     * @param pageSize page size
+     * @return List of Payment that belong to renter Id
+     */
    @GetMapping("/getOrderForRenter")
     public List<Payment> getOrderForRenter(
             @RequestParam int renterId,
@@ -106,6 +138,11 @@ public class PaymentController implements BasicGetController<Payment> {
         return Algorithm.<Payment>paginate(getJsonTable(),page,pageSize,pred -> pred.renterId == renterId);
     }
 
+    /**
+     * Get All Payment by buyer Id
+     * @param buyerId buyer id
+     * @return List of Payment that belong to buyer Id
+     */
     @GetMapping("/getOrderForBuyer")
     public List<Payment> getOrderForBuyer(
             @RequestParam int buyerId

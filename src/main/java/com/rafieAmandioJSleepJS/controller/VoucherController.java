@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * VoucherController class
+ * This class is used to control voucher APi
+ * @author Rafie Amandio
+ */
 @RestController
 @RequestMapping("/voucher")
 public class VoucherController implements BasicGetController<Voucher> {
@@ -20,6 +25,12 @@ public class VoucherController implements BasicGetController<Voucher> {
         return voucherTable;
     }
 
+    /**
+     * Get all voucher that is available and paginate it
+     * @param page page number
+     * @param pageSize page size
+     * @return list of voucher that is available
+     */
     @GetMapping("/getAvailable")
     List<Voucher> getAvailable(
             @RequestParam int page,
@@ -28,12 +39,23 @@ public class VoucherController implements BasicGetController<Voucher> {
         return Algorithm.<Voucher>paginate(voucherTable, page, pageSize, pred ->  !pred.isUsed());
     }
 
+    /**
+     * Check if voucher is used or not
+     * @param id voucher id
+     * @return true if voucher is used, false if not
+     */
     @GetMapping("/{id}/isUsed")
     boolean isUsed(@PathVariable int id){
         Voucher voucher = Algorithm.<Voucher>find(voucherTable, pred -> pred.id == id);
         return voucher.isUsed();
     }
 
+    /**
+     * Check the validity of voucher
+     * @param id voucher id
+     * @param price price
+     * @return true if voucher is valid, false if not
+     */
     @GetMapping("/{id}/canApply")
     boolean canApply(
             @PathVariable int id,

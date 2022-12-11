@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RoomController class
+ * This class is used to control room APi
+ */
 @RestController
 @RequestMapping("/room")
 public class RoomController implements BasicGetController<Room>{
